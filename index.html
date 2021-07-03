@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>my-electron-crasher</title>
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-  </head>
-  <body>
-    <img src="./assets/img/logo.png" />
-    <h1>my-electron-crasher</h1>
-    <div id="buttons-container"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>my-electron-crasher</title>
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row pt-4">
+      <div class="col">
+        <img src="./assets/img/logo.png" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>my-electron-crasher</h2>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col">
+        <div id="main-error-button-container"></div>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col">
+        <div id="renderer-error-button-container"></div>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col">
+        <div id="native-crash-button-container"></div>
+      </div>
+    </div>
     <!-- You can also require other files to run in this process -->
     <script src="./dist/src/renderer.js"></script>
-  </body>
+</body>
+
 </html>
