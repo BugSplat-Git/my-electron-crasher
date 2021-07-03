@@ -9,7 +9,7 @@ crashReporter.start({
   submitURL: "https://fred.bugsplat.com/post/electron/crash",
   ignoreSystemCrashHandler: true,
   uploadToServer: true,
-  compress: false, // Compressed uploads yet supported
+  compress: false, // Compressed uploads not yet supported
   rateLimit: false,
   globalExtra: {
     "key": "en-US",
