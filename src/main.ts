@@ -1,18 +1,60 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, crashReporter, ipcMain } from "electron";
+import { uncaughtException } from "./crasher";
 import * as path from "path";
+
+// Required: Handle Native crashes in Electron and Native add-ins
+crashReporter.start({
+  companyName: "BugSplat",
+  productName: "my-electron-crasher",
+  submitURL: "https://fred.bugsplat.com/post/electron/crash",
+  ignoreSystemCrashHandler: true,
+  uploadToServer: true,
+  compress: false, // Compressed uploads yet supported
+  rateLimit: false,
+  globalExtra: {
+    "key": "en-US",
+    "email": "fred@bugsplat.com",
+    "comments": "BugSplat rocks!"
+  }
+})
+
+// Recommended: Initialize BugSplat with database name, app name, and version to catch JavaScript errors
+import { BugSplatNode as BugSplat } from "bugsplat-node";
+import * as env from "../package.json"
+const bugsplat = new BugSplat(env.database, env.name, env.version)
+
+// Recommended: The following methods allow further customization
+bugsplat.setDefaultAppKey("main")
+bugsplat.setDefaultUser("Fred")
+bugsplat.setDefaultEmail("fred@bedrock.com")
+bugsplat.setDefaultDescription("description")
+bugsplat.setDefaultAdditionalFilePaths(["./assets/attachment.txt"])
+
+// Recommended: Post to BugSplat when unhandledRejections and uncaughtExceptions occur
+const javaScriptErrorHandler = async (error: Error) => {
+  await bugsplat.post(error);
+  app.quit();
+}
+process.on("unhandledRejection", javaScriptErrorHandler)
+process.on("uncaughtException", javaScriptErrorHandler)
+
+// Optional: Uncomment to send an Error to BugSplat manually
+//bugsplat.post(new Error("foobar!")).then(({ error, response, original }) => console.log(error, response, original))
 
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     height: 600,
+    width: 800,
     webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true,
       preload: path.join(__dirname, "preload.js"),
     },
-    width: 800,
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, "../index.html"));
+  mainWindow.loadFile(path.join(__dirname, "../../index.html"));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -25,7 +67,7 @@ app.on("ready", () => {
   createWindow();
 
   app.on("activate", function () {
-    // On macOS it's common to re-create a window in the app when the
+    // On macOS it"s common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
@@ -39,6 +81,16 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
+
+// Called from renderer.js to test JavaScript error handling
+ipcMain.on("mainError", function () {
+  uncaughtException()
+})
+
+// Called from renderer.js to test Native error handling
+ipcMain.on("nativeCrash", function () {
+  process.crash()
+})
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
