@@ -6,7 +6,7 @@ import * as path from "path";
 crashReporter.start({
   companyName: "BugSplat",
   productName: "my-electron-crasher",
-  submitURL: "https://fred.bugsplat.com/post/electron/crash",
+  submitURL: "https://fred.bugsplat.com/post/electron/crash.php",
   ignoreSystemCrashHandler: true,
   uploadToServer: true,
   rateLimit: false,
