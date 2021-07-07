@@ -2,14 +2,13 @@ import { app, BrowserWindow, crashReporter, ipcMain } from "electron";
 import { uncaughtException } from "./crasher";
 import * as path from "path";
 
-// Required: Handle Native crashes in Electron and Native add-ins
+// Required: Handle native crashes in Electron and native add-ins
 crashReporter.start({
   companyName: "BugSplat",
   productName: "my-electron-crasher",
   submitURL: "https://fred.bugsplat.com/post/electron/crash",
   ignoreSystemCrashHandler: true,
   uploadToServer: true,
-  compress: false, // Compressed uploads not yet supported
   rateLimit: false,
   globalExtra: {
     "key": "en-US",
