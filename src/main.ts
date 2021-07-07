@@ -28,7 +28,7 @@ bugsplat.setDefaultAppKey("main")
 bugsplat.setDefaultUser("Fred")
 bugsplat.setDefaultEmail("fred@bedrock.com")
 bugsplat.setDefaultDescription("description")
-bugsplat.setDefaultAdditionalFilePaths(["./assets/attachment.txt"])
+bugsplat.setDefaultAdditionalFilePaths(["./src/assets/attachment.txt"])
 
 // Recommended: Post to BugSplat when unhandledRejections and uncaughtExceptions occur
 const javaScriptErrorHandler = async (error: Error) => {
