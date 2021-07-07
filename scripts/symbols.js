@@ -35,4 +35,4 @@ return bugsplat.login(email, password)
         version,
         files
     ))
-    .then(() => console.log('done!'));
+    .then(() => console.log(`Source maps uploaded to BugSplat ${database}-${application}-${version} successfully!`));
