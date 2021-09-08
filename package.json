@@ -37,7 +37,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "bootstrap": "^5.1.0",
+    "bootstrap": "^5.1.1",
     "bugsplat-node": "^2.0.1"
   }
 }
