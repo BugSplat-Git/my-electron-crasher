@@ -5,7 +5,7 @@
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
     "build": "tsc",
-    "postbuild": "node ./scripts/symbols.mjs",
+    "postbuild": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist/src",
     "watch": "tsc -w",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
     "prestart": "npm run build",
@@ -31,7 +31,7 @@
   "author": "BugSplat",
   "license": "CC0-1.0",
   "devDependencies": {
-    "@bugsplat/symbol-upload": "^4.0.0",
+    "@bugsplat/symbol-upload": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^4.32.0",
     "dotenv": "^10.0.0",
