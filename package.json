@@ -31,7 +31,7 @@
   "author": "BugSplat",
   "license": "CC0-1.0",
   "devDependencies": {
-    "@bugsplat/symbol-upload": "^4.0.0",
+    "@bugsplat/symbol-upload": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^4.32.0",
     "dotenv": "^10.0.0",
