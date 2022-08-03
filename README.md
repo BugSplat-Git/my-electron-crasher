@@ -1,9 +1,21 @@
-[![BugSplat](https://s3.amazonaws.com/bugsplat-public/npm/header.png)](https://www.bugsplat.com)
+[![bugsplat-github-banner-basic-outline](https://user-images.githubusercontent.com/20464226/149019306-3186103c-5315-4dad-a499-4fd1df408475.png)](https://bugsplat.com)
+<br/>
+# <div align="center">BugSplat</div> 
+### **<div align="center">Crash and error reporting built for busy developers.</div>**
+<div align="center">
+    <a href="https://twitter.com/BugSplatCo">
+        <img alt="Follow @bugsplatco on Twitter" src="https://img.shields.io/twitter/follow/bugsplatco?label=Follow%20BugSplat&style=social">
+    </a>
+    <a href="https://discord.gg/K4KjjRV5ve">
+        <img alt="Join BugSplat on Discord" src="https://img.shields.io/discord/664965194799251487?label=Join%20Discord&logo=Discord&style=social">
+    </a>
+</div>
 
 # my-electron-crasher
+
 The my-electron-crasher sample demonstrates how to use how to use Electron's [Crashpad](https://chromium.googlesource.com/crashpad/crashpad/+/refs/heads/main/doc/overview_design.md) based [crashReporter](https://github.com/electron/electron/blob/master/docs/api/crash-reporter.md) for tracking native crashes with BugSplat. This sample also demonstrates BugSplat's [npm package](https://www.npmjs.com/package/bugsplat-node) to track JavaScript/TypeScript errors in your Electron application.
 
-## Steps
+## 🥾 Steps
 
 1. `git clone https://github.com/BugSplat-Git/my-electron-crasher`
 2. `cd my-electron-crasher && npm i`
