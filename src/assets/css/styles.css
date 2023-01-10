@@ -1,6 +1,87 @@
 .container-fluid {
-    background-color: #00386c;
+    /*background-color: #00386c;*/
     color: #ffffff;
     display: block;
     height: 100vh;
+    background-image: url('../img/background.png');
+}
+
+h1,
+h2 {
+    color: #007bff;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: sans-serif;
+}
+
+body::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+    background-image: url('../img/background.png');
+    background-repeat: repeat;
+    background-size: 25%;
+}
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.content {
+    background: #fff;
+    box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding-top: 5px;
+    overflow-y: auto;
+}
+
+.errors {
+    margin-top: 5px;
+    background: rgb(225, 225, 225);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* button, with class of error */
+button.error {
+    background: #fff;
+    transition-property: background-color;
+}
+
+/* button, with class of error, and when hover is triggered */
+button.error:hover {
+    background: rgb(245, 245, 245);
+}
+
+/* button, with class of error, when focus is triggered */
+
+button.error:focus {
+    border: 3px solid #007bff;
+}
+
+/* select: parent error, child h4 */
+.error > h4 {
+    margin-top: 0;
+}
+
+.logo {
+    width: 60%;
+    padding: 15px;
+}
+
+p {
+    padding-left: 24px;
+    padding-right: 24px;
 }

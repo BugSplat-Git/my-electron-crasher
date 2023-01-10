@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>my-electron-crasher</title>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+        <link rel="stylesheet" href="./src/assets/css/styles.css">
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <a href="https://www.bugsplat.com"><img class="logo" src="./src/assets/img/bugsplat-logo.png"></a>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>my-electron-crasher</title>
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <link rel="stylesheet" href="./src/assets/css/styles.css">
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
-
-<body>
-  <div class="container-fluid">
-    <div class="row pt-4">
-      <div class="col">
-        <img src="./src/assets/img/logo.png" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h2>my-electron-crasher</h2>
-      </div>
-    </div>
-    <div class="row pt-2">
-      <div class="col">
-        <div id="main-error-button-container"></div>
-      </div>
-    </div>
-    <div class="row pt-2">
-      <div class="col">
-        <div id="renderer-error-button-container"></div>
-      </div>
-    </div>
-    <div class="row pt-2">
-      <div class="col">
-        <div id="native-crash-button-container"></div>
-      </div>
-    </div>
-    <!-- You can also require other files to run in this process -->
-    <script src="./dist/src/renderer.js"></script>
-</body>
-
+            <div class="content">
+                <h1>
+                    Welcome to my-electron-crasher
+                </h1>
+                <p>
+                    This is a sample application that demonstrates <a href="www.bugsplat.com">BugSplat</a> error
+                    reporting
+                    for <a href="www.electronjs.org">Electron</a> applications build with JavaScript or TypeScript.
+                </p>
+                <div class="errors">
+                    <h2>Errors</h2>
+                    <button class="error" id="main-error-button">
+                        <h2>Main Error</h2>
+                        <h4>unhandled rejected promise</h4>
+                        <h4>WILL TERMINATE APP</h4>
+                    </button>
+                    <button class="error" id="renderer-error-button">
+                        <h2>Renderer Error</h2>
+                        <h4>uncaught exception</h4>
+                    </button>
+                    <button class="error" id="native-crash-button">
+                        <h2>Native (plugin) Crash</h2>
+                        <h4>dereference null pointer in native code</h4>
+                        <h4>WILL TERMINATE APP</h4>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="./dist/src/renderer.js"></script>
+    </body>
 </html>

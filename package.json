@@ -4,12 +4,16 @@
   "database": "fred",
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
-    "build": "tsc",
-    "postbuild": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist/src",
-    "watch": "tsc -w",
-    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "start": "electron ./dist/src/main.js",
     "prestart": "npm run build",
-    "start": "electron ./dist/src/main.js"
+    "build": "npm run build:ts && npm run build:cpp",
+    "build:ts": "npx tsc",
+    "build:cpp": "cmake-js compile --debug",
+    "postbuild:cpp": "copyfiles --flat ./build/Debug/addon.node ./dist && npm run dump_syms",
+    "dump_syms": "node-dump-syms ./dist/addon.node > ./dist/addon.node.sym",
+    "postbuild": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist -f \"/**/*+(.js.map|.sym)\"",
+    "watch": "tsc -w",
+    "lint": "eslint -c .eslintrc --ext .ts ./src"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
   "keywords": [
@@ -30,17 +34,23 @@
   ],
   "author": "BugSplat",
   "license": "CC0-1.0",
+  "dependencies": {
+    "bugsplat": "^7.1.3",
+    "bugsplat-node": "^2.1.0",
+    "dotenv": "^16.0.3",
+    "electron": "^21.1.0",
+    "node-addon-api": "^3.2.1"
+  },
   "devDependencies": {
     "@bugsplat/symbol-upload": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
+    "cmake-js": "^7.1.1",
+    "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
     "electron": "^20.0.0",
     "eslint": "^8.14.0",
+    "node-dump-syms": "^1.2.1",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "bugsplat": "^7.1.3",
-    "bugsplat-node": "^2.1.0"
   }
 }

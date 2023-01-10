@@ -1,6 +1,8 @@
 import { app, BrowserWindow, crashReporter, ipcMain } from "electron";
-import { uncaughtException } from "./crasher";
+import {uncaughtException, unhandledRejection} from "./crasher";
 import * as path from "path";
+
+const { add } = require('../addon.node');
 
 // Required: Handle native crashes in Electron and native add-ins
 crashReporter.start({
@@ -84,15 +86,12 @@ app.on("window-all-closed", () => {
   }
 });
 
-// Called from renderer.js to test JavaScript error handling
-ipcMain.on("mainError", function () {
-  uncaughtException()
+ipcMain.on("trigger:user-main-crash", function () {
+  console.log(`on.trigger:user-main-crash`);
+  unhandledRejection("unhandledRejection: main process");
+  // ipcUserMainCrash();
 })
 
-// Called from renderer.js to test Native error handling
-ipcMain.on("nativeCrash", function () {
-  process.crash()
+ipcMain.on("trigger:plugin-main-crash", function () {
+  console.log("add = ", add(7,3));
 })
-
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
