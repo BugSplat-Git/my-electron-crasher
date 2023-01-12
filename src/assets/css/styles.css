@@ -54,6 +54,11 @@ body::before {
 button.error {
     background: #fff;
     transition-property: background-color;
+    padding: unset;
+    border-width: unset;
+    border-style: unset;
+    border-color: unset;
+    border-image: unset;
 }
 
 /* button, with class of error, and when hover is triggered */
