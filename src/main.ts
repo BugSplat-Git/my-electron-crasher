@@ -89,7 +89,6 @@ app.on("window-all-closed", () => {
 ipcMain.on("trigger:user-main-crash", function () {
   console.log(`on.trigger:user-main-crash`);
   unhandledRejection("unhandledRejection: main process");
-  // ipcUserMainCrash();
 })
 
 ipcMain.on("trigger:plugin-main-crash", function () {

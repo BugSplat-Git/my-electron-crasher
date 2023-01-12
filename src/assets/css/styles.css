@@ -1,11 +1,3 @@
-.container-fluid {
-    /*background-color: #00386c;*/
-    color: #ffffff;
-    display: block;
-    height: 100vh;
-    background-image: url('../img/background.png');
-}
-
 h1,
 h2 {
     color: #007bff;

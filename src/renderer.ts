@@ -27,12 +27,6 @@ window.onerror = async (messageOrEvent, source, lineno, colno, error) => {
 }
 
 window.onload = function () {
-    console.log('in onload');
-
-    // document.getElementById("main-error-button-container").innerHTML = "<button id=\"main-error-button\" class=\"btn btn-danger\">JavaScript (Main) Error</button>";
-    // document.getElementById("renderer-error-button-container").innerHTML = "<button id=\"renderer-error-button\" class=\"btn btn-danger\">JavaScript (Renderer) Error</button>"
-    // document.getElementById("native-error-button-container").innerHTML = "<button id=\"native-crash-button\" class=\"btn btn-danger\">Native Crash</button>"
-
     // Trigger an unhandled JavaScript error to test BugSplat in main.js
     document.getElementById("main-error-button").onclick = function () {
         ipcRenderer.send("trigger:user-main-crash");
