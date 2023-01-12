@@ -1,4 +1,4 @@
-import { app, BrowserWindow, crashReporter, ipcMain } from "electron";
+import { shell, app, BrowserWindow, crashReporter, ipcMain } from "electron";
 import {uncaughtException, unhandledRejection} from "./crasher";
 import * as path from "path";
 
@@ -89,8 +89,13 @@ app.on("window-all-closed", () => {
 ipcMain.on("trigger:user-main-crash", function () {
   console.log(`on.trigger:user-main-crash`);
   unhandledRejection("unhandledRejection: main process");
-})
+});
 
 ipcMain.on("trigger:plugin-main-crash", function () {
   console.log("add = ", add(7,3));
+});
+
+ipcMain.on('open-external-url-event', (event, url) => {
+  event.returnValue = 'Message received!'
+  shell.openExternal(url);
 })
