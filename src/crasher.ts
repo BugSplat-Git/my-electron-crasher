@@ -1,28 +1,32 @@
 
-export function uncaughtException() {
-    generateStackFramesAndCrash();
+export function uncaughtException(str="uncaughtException") {
+    generateStackFramesAndCrash(str);
 }
 
-export async function unhandledRejection() {
-    return generateStackFramesAndCrash();
+export async function unhandledRejection(str="unhandledRejection") {
+    return generateStackFramesAndCrash(str);
 }
 
-function generateStackFramesAndCrash() {
-    sampleStackFrame0();
+function generateStackFramesAndCrash(str: string) {
+    sampleStackFrame0(str);
 }
 
-function sampleStackFrame0() {
-    sampleStackFrame1();
+function sampleStackFrame0(str: string) {
+    sampleStackFrame1(str);
 }
 
-function sampleStackFrame1() {
-    sampleStackFrame2();
+function sampleStackFrame1(str: string) {
+    sampleStackFrame2(str);
 }
 
-function sampleStackFrame2() {
-    crash();
+function sampleStackFrame2(str: string) {
+    crash(str);
 }
 
-function crash() {
-    throw new Error("BugSplat!");
+function crash(str: string) {
+    if ( str ) {
+        throw new Error(`BugSplat: ${str}`)
+    } else {
+        throw new Error("BugSplat!");
+    }
 }
