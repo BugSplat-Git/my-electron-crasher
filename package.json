@@ -44,7 +44,7 @@
   "devDependencies": {
     "@bugsplat/symbol-upload": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
+    "@typescript-eslint/parser": "^5.50.0",
     "cmake-js": "^7.1.1",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
