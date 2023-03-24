@@ -26,16 +26,21 @@
                     <h2>Errors</h2>
                     <button class="error" id="main-error-button">
                         <h2>Main Error</h2>
-                        <h4>unhandled rejected promise</h4>
-                    <h4>WILL TERMINATE APP</h4>
+                        <p>unhandled rejected promise</p>
+                        <h4>WILL TERMINATE APP</h4>
                     </button>
                     <button class="error" id="renderer-error-button">
                         <h2>Renderer Error</h2>
-                        <h4>uncaught exception</h4>
+                        <p>uncaught exception</p>
                     </button>
                     <button class="error" id="native-crash-button">
-                        <h2>Native (Plugin) Crash</h2>
-                        <h4>dereference null pointer in native code</h4>
+                        <h2>Native Crash</h2>
+                        <p>Calls process.crash</p>
+                    </button>
+                    <button class="error" id="addon-crash-button">
+                        <h2>Native (Addon) Crash</h2>
+                        <p>dereference null pointer in native code</p>
+                        <p>requires you configure cmake.js and run npm run build:all</p>
                         <h4>WILL TERMINATE APP</h4>
                     </button>
                 </div>

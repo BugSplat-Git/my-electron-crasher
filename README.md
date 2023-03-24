@@ -27,6 +27,10 @@ The my-electron-crasher sample demonstrates how to use how to use Electron's [Cr
 
 For more information about getting started with Electron check out the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation. For additional help using BugSplat, check out the [documentation](https://www.bugsplat.com/docs/sdk/electron/) on our website or email support(at)bugsplat.com if you have any questions.
 
+### Native Addon
+
+If you would like to test a crash in a Native Addon, follow the steps to configure your system for [cmake-js](https://github.com/cmake-js/cmake-js#installation) and set the `prestart` script to `npm run build:all`.
+
 Good luck!
 © BugSplat Software
 [Web](https://www.bugsplat.com) | [Twitter](https://twitter.com/BugSplatCo) | [Facebook](https://www.facebook.com/bugsplatsoftware/)

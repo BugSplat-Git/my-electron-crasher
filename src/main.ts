@@ -91,7 +91,11 @@ ipcMain.on("trigger:user-main-crash", function () {
   unhandledRejection("unhandledRejection: main process");
 });
 
-ipcMain.on("trigger:plugin-main-crash", function () {
+ipcMain.on("trigger:native-main-crash", function () {
+  process.crash();
+});
+
+ipcMain.on("trigger:addon-main-crash", function () {
   console.log("add = ", add(7,3));
 });
 

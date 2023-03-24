@@ -32,9 +32,14 @@ window.onload = function () {
         ipcRenderer.send("trigger:user-main-crash");
     }
 
-    // Trigger an Electron Framework crash to test crashReporter in main.js
+    // Trigger a Electron crash to test crashReporter in main.js
     document.getElementById("native-crash-button").onclick = function () {
-        ipcRenderer.send("trigger:plugin-main-crash");
+        ipcRenderer.send("trigger:native-main-crash");
+    }
+
+    // Trigger a Native Addon crash to test crashReporter in main.js
+    document.getElementById("addon-crash-button").onclick = function () {
+        ipcRenderer.send("trigger:addon-main-crash");
     }
 
     // Trigger an unhandled JavaScript error to test BugSplat in renderer.js
