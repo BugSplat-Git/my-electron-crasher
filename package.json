@@ -36,9 +36,11 @@
   "author": "BugSplat",
   "license": "CC0-1.0",
   "dependencies": {
+    "@bugsplat/js-api-client": "^8.1.2",
     "bugsplat": "^8.0.0",
     "bugsplat-node": "^3.0.0",
     "dotenv": "^16.0.3",
+    "jszip": "^3.10.1",
     "node-addon-api": "^3.2.1"
   },
   "devDependencies": {
@@ -49,7 +51,7 @@
     "cmake-js": "^7.2.1",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
-    "electron": "^23.2.0",
+    "electron": "^29.1.0",
     "eslint": "^8.14.0",
     "node-dump-syms": "^1.2.1",
     "typescript": "^5.0.2"

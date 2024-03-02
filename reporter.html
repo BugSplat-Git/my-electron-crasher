@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oops! Something went wrong.</title>
+    <style>
+      .logo {
+        width: 90%;
+      }
+
+      .d-flex {
+        display: flex;
+        flex-direction: column;
+      }
+
+      button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="logo" src="./src/assets/img/bugsplat-logo.png" />
+    <h1>Splat!</h1>
+    <p>
+      Your app crashed and had to restart. To help the developers fix this
+      issue, please enter the details of what you were doing before the crash
+      occurred.
+    </p>
+    <form class="d-flex">
+      <label for="email">Email</label>
+      <input id="email" type="email" id="email" name="email" />
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        cols="50"
+      ></textarea>
+      <button id="submit" type="submit" value="Submit">Submit</button>
+    </form>
+  </body>
+  <script src="./dist/src/reporter.js"></script>
+</html>
