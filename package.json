@@ -13,7 +13,7 @@
     "postbuild:cpp": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist -f \"/**/*.node\" -m",
     "postbuild:ts": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist -f \"/**/*.js.map\"",
     "watch": "tsc -w",
-    "lint": "eslint -c .eslintrc --ext .ts ./src"
+    "lint": "npx eslint ./src"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
   "keywords": [
@@ -35,21 +35,21 @@
   "author": "BugSplat",
   "license": "CC0-1.0",
   "dependencies": {
-    "bugsplat": "^8.0.0",
-    "bugsplat-node": "^3.0.0",
+    "bugsplat": "^8.0.1",
+    "bugsplat-node": "^3.0.2",
     "dotenv": "^16.0.3",
     "node-addon-api": "^3.2.1"
   },
   "devDependencies": {
     "@bugsplat/symbol-upload": "^8.0.5",
+    "@eslint/js": "^9.0.0",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.21.0",
     "cmake-js": "^7.2.1",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
     "electron": "^30.0.1",
-    "eslint": "^8.14.0",
-    "typescript": "^5.4.5"
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.7.0"
   }
 }

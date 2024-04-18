@@ -1,6 +1,6 @@
-import { shell, app, BrowserWindow, crashReporter, ipcMain } from "electron";
-import {uncaughtException, unhandledRejection} from "./crasher";
+import { BrowserWindow, app, crashReporter, ipcMain, shell } from "electron";
 import * as path from "path";
+import { unhandledRejection } from "./crasher";
 
 const { add } = require('../addon.node');
 
@@ -21,7 +21,7 @@ crashReporter.start({
 
 // Recommended: Initialize BugSplat with database name, app name, and version to catch JavaScript errors
 import { BugSplatNode as BugSplat } from "bugsplat-node";
-import * as env from "../package.json"
+import * as env from "../package.json";
 const bugsplat = new BugSplat(env.database, env.name, env.version)
 
 // Recommended: The following methods allow further customization
@@ -96,7 +96,7 @@ ipcMain.on("trigger:native-main-crash", function () {
 });
 
 ipcMain.on("trigger:addon-main-crash", function () {
-  console.log("add = ", add(7,3));
+  console.log("add = ", add(7, 3));
 });
 
 ipcMain.on('open-external-url-event', (event, url) => {
