@@ -15,6 +15,8 @@
 
 The my-electron-crasher sample demonstrates how to use how to use Electron's [Crashpad](https://chromium.googlesource.com/crashpad/crashpad/+/refs/heads/main/doc/overview_design.md) based [crashReporter](https://github.com/electron/electron/blob/master/docs/api/crash-reporter.md) for tracking native crashes with BugSplat. This sample also demonstrates BugSplat's [npm package](https://www.npmjs.com/package/bugsplat-node) to track JavaScript/TypeScript errors in your Electron application.
 
+<img width="1840" alt="my-electron-crasher" src="https://github.com/BugSplat-Git/my-electron-crasher/assets/2646053/5155fc56-4fdf-42ce-996e-6b00acdf14db">
+
 ## 🥾 Steps
 
 1. `git clone https://github.com/BugSplat-Git/my-electron-crasher`
@@ -23,9 +25,11 @@ The my-electron-crasher sample demonstrates how to use how to use Electron's [Cr
 4. Click any of the buttons in the app to test the BugSplat integration
 5. Navigate to BugSplat's [Crashes](https://app.bugsplat.com/v2/crashes) page in your web browser
 6. When prompted to log in, use the username `fred@bugsplat.com` and password `Flintstone`
-7. Click the ID of your crash to see crash details
+7. Click the ID of your crash to see crash details if everything worked you should see something that resembles the following
 
-For more information about getting started with Electron check out the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation. For additional help using BugSplat, check out the [documentation](https://www.bugsplat.com/docs/sdk/electron/) on our website or email support(at)bugsplat.com if you have any questions.
+<img width="1728" alt="Electron Crash" src="https://github.com/BugSplat-Git/my-electron-crasher/assets/2646053/b22d90af-7d59-4aea-880a-6c9033afda8e">
+
+For more information about getting started with Electron, check out the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation. For additional help using BugSplat, check out the [documentation](https://www.bugsplat.com/docs/sdk/electron/) on our website or email support(at)bugsplat.com if you have any questions.
 
 ### Native Addon
 
