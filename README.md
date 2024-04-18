@@ -25,7 +25,7 @@ The my-electron-crasher sample demonstrates how to use how to use Electron's [Cr
 4. Click any of the buttons in the app to test the BugSplat integration
 5. Navigate to BugSplat's [Crashes](https://app.bugsplat.com/v2/crashes) page in your web browser
 6. When prompted to log in, use the username `fred@bugsplat.com` and password `Flintstone`
-7. Click the ID of your crash to see crash details if everything worked you should see something that resembles the following
+7. Click the ID of your crash to see crash details. If everything worked, you should see something that resembles the following
 
 <img width="1728" alt="Electron Crash" src="https://github.com/BugSplat-Git/my-electron-crasher/assets/2646053/b22d90af-7d59-4aea-880a-6c9033afda8e">
 
