@@ -9,10 +9,9 @@
     "build": "npm run build:ts",
     "build:all": "npm run build:ts && npm run build:cpp",
     "build:ts": "npx tsc",
-    "build:cpp": "cmake-js compile --debug",
-    "postbuild:cpp": "copyfiles --flat ./build/Debug/addon.node ./dist && npm run dump_syms",
-    "dump_syms": "node-dump-syms ./dist/addon.node > ./dist/addon.node.sym",
-    "postbuild": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist -f \"/**/*+(.js.map|.sym)\"",
+    "build:cpp": "cmake-js compile --debug && copyfiles --flat ./build/Debug/addon.node ./dist",
+    "postbuild:cpp": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist -f \"/**/*.node\" -m",
+    "postbuild:ts": "node -r dotenv/config ./node_modules/@bugsplat/symbol-upload/dist/bin/index.js -d ./dist -f \"/**/*.js.map\"",
     "watch": "tsc -w",
     "lint": "eslint -c .eslintrc --ext .ts ./src"
   },
@@ -42,16 +41,15 @@
     "node-addon-api": "^3.2.1"
   },
   "devDependencies": {
-    "@bugsplat/symbol-upload": "^6.1.4",
-    "@types/node": "^18.15.7",
+    "@bugsplat/symbol-upload": "^8.0.5",
+    "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.21.0",
     "cmake-js": "^7.2.1",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
-    "electron": "^23.2.0",
+    "electron": "^30.0.1",
     "eslint": "^8.14.0",
-    "node-dump-syms": "^1.2.1",
-    "typescript": "^5.0.2"
+    "typescript": "^5.4.5"
   }
 }
