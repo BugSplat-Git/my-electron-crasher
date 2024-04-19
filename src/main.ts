@@ -21,9 +21,8 @@ crashReporter.start({
 })
 
 // Recommended: Initialize BugSplat with database name, app name, and version to catch JavaScript errors
-import { BugSplatNode as BugSplat } from "bugsplat-node";
-import * as env from "../package.json";
-const bugsplat = new BugSplat(env.database, env.name, env.version)
+import { BugSplatNode as BugSplat } from "bugsplat-node"
+const bugsplat = new BugSplat(database, name, version)
 
 // Recommended: The following methods allow further customization
 bugsplat.setDefaultAppKey("main")

@@ -35,7 +35,6 @@
   "author": "BugSplat",
   "license": "CC0-1.0",
   "dependencies": {
-    "bugsplat": "^8.0.1",
     "bugsplat-node": "^3.0.2",
     "dotenv": "^16.0.3",
     "node-addon-api": "^3.2.1"
