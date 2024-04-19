@@ -2,27 +2,27 @@ import { BrowserWindow, app, crashReporter, ipcMain, shell } from "electron";
 import * as path from "path";
 import { unhandledRejection } from "./crasher";
 
+const { database, name, version } = require("../../package.json");
 const { add } = require('../addon.node');
 
 // Required: Handle native crashes in Electron and native add-ins
 crashReporter.start({
-  companyName: "BugSplat",
-  productName: "my-electron-crasher",
-  submitURL: "https://fred.bugsplat.com/post/electron/crash.php",
+  submitURL: `https://${database}.bugsplat.com/post/electron/v2/crash.php`,
   ignoreSystemCrashHandler: true,
   uploadToServer: true,
   rateLimit: false,
   globalExtra: {
+    "product": name,
+    "version": version,
     "key": "en-US",
     "email": "fred@bugsplat.com",
-    "comments": "BugSplat rocks!"
+    "comments": "BugSplat rocks!",
   }
 })
 
 // Recommended: Initialize BugSplat with database name, app name, and version to catch JavaScript errors
-import { BugSplatNode as BugSplat } from "bugsplat-node";
-import * as env from "../package.json";
-const bugsplat = new BugSplat(env.database, env.name, env.version)
+import { BugSplatNode as BugSplat } from "bugsplat-node"
+const bugsplat = new BugSplat(database, name, version)
 
 // Recommended: The following methods allow further customization
 bugsplat.setDefaultAppKey("main")
