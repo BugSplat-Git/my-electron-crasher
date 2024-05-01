@@ -43,7 +43,7 @@
     "@bugsplat/symbol-upload": "^8.0.6",
     "@eslint/js": "^9.0.0",
     "@types/node": "^20.12.7",
-    "cmake-js": "^7.2.1",
+    "cmake-js": "^7.3.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.4.5",
     "electron": "^30.0.1",
