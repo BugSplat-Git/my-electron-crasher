@@ -3,7 +3,13 @@ import * as path from "path";
 import { unhandledRejection } from "./crasher";
 
 const { database, name, version } = require("../../package.json");
-const { add } = require('../addon.node');
+
+let add: (a: number, b: number) => number;
+try {
+  add = require("../addon.node");
+} catch (e) {
+  console.warn("Failed to load addon.node, please run `npm run build:cpp`");
+}
 
 // Required: Handle native crashes in Electron and native add-ins
 crashReporter.start({
@@ -12,32 +18,32 @@ crashReporter.start({
   uploadToServer: true,
   rateLimit: false,
   globalExtra: {
-    "product": name,
-    "version": version,
-    "key": "en-US",
-    "email": "fred@bugsplat.com",
-    "comments": "BugSplat rocks!",
-  }
-})
+    product: name,
+    version: version,
+    key: "en-US",
+    email: "fred@bugsplat.com",
+    comments: "BugSplat rocks!",
+  },
+});
 
 // Recommended: Initialize BugSplat with database name, app name, and version to catch JavaScript errors
-import { BugSplatNode as BugSplat } from "bugsplat-node"
-const bugsplat = new BugSplat(database, name, version)
+import { BugSplatNode as BugSplat } from "bugsplat-node";
+const bugsplat = new BugSplat(database, name, version);
 
 // Recommended: The following methods allow further customization
-bugsplat.setDefaultAppKey("main")
-bugsplat.setDefaultUser("Fred")
-bugsplat.setDefaultEmail("fred@bedrock.com")
-bugsplat.setDefaultDescription("description")
-bugsplat.setDefaultAdditionalFilePaths(["./src/assets/attachment.txt"])
+bugsplat.setDefaultAppKey("main");
+bugsplat.setDefaultUser("Fred");
+bugsplat.setDefaultEmail("fred@bedrock.com");
+bugsplat.setDefaultDescription("description");
+bugsplat.setDefaultAdditionalFilePaths(["./src/assets/attachment.txt"]);
 
 // Recommended: Post to BugSplat when unhandledRejections and uncaughtExceptions occur
 const javaScriptErrorHandler = async (error: Error) => {
   await bugsplat.post(error);
   app.quit();
-}
-process.on("unhandledRejection", javaScriptErrorHandler)
-process.on("uncaughtException", javaScriptErrorHandler)
+};
+process.on("unhandledRejection", javaScriptErrorHandler);
+process.on("uncaughtException", javaScriptErrorHandler);
 
 // Optional: Uncomment to send an Error to BugSplat manually
 //bugsplat.post(new Error("foobar!")).then(({ error, response, original }) => console.log(error, response, original))
@@ -58,7 +64,7 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, "../../index.html"));
 
   // Maximize the window so the buttons aren't hidden
-  mainWindow.maximize()
+  mainWindow.maximize();
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -99,7 +105,7 @@ ipcMain.on("trigger:addon-main-crash", function () {
   console.log("add = ", add(7, 3));
 });
 
-ipcMain.on('open-external-url-event', (event, url) => {
-  event.returnValue = 'Message received!'
+ipcMain.on("open-external-url-event", (event, url) => {
+  event.returnValue = "Message received!";
   shell.openExternal(url);
-})
+});
