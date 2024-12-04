@@ -6,7 +6,7 @@ const { database, name, version } = require("../../package.json");
 
 let add: (a: number, b: number) => number;
 try {
-  add = require("../addon.node");
+  ({ add } = require("../addon.node"));
 } catch (e) {
   console.warn("Failed to load addon.node, please run `npm run build:cpp`");
 }
