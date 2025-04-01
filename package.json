@@ -48,7 +48,7 @@
     "dotenv": "^16.4.7",
     "electron": "^28.3.3",
     "eslint": "^9.23.0",
-    "typescript": "^5.7.2",
+    "typescript": "^5.8.2",
     "typescript-eslint": "^8.19.0"
   }
 }
