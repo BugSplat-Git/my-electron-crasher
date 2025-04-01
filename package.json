@@ -46,7 +46,7 @@
     "cmake-js": "^7.3.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.4.7",
-    "electron": "^28.3.3",
+    "electron": "^35.1.2",
     "eslint": "^9.23.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.29.0"
