@@ -44,7 +44,7 @@ jobs:
       matrix:
         include:
         - language: c-cpp
-          build-mode: autobuild
+          build-mode: manual
         - language: javascript-typescript
           build-mode: none
         # CodeQL supports the following values keywords for 'language': 'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift'
@@ -62,8 +62,10 @@ jobs:
     # Add any setup steps before running the `github/codeql-action/init` action.
     # This includes steps like installing compilers or runtimes (`actions/setup-node`
     # or others). This is typically only required for manual builds.
-    # - name: Setup runtime (example)
-    #   uses: actions/setup-example@v1
+    - name: Set up Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -85,14 +87,24 @@ jobs:
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
     - if: matrix.build-mode == 'manual'
+      name: Build C++ Addon and dependencies
       shell: bash
       run: |
-        echo 'If you are using a "manual" build mode for one or more of the' \
-          'languages you are analyzing, replace this with the commands to build' \
-          'your code, for example:'
-        echo '  make bootstrap'
-        echo '  make release'
-        exit 1
+        if [[ "${{ matrix.language }}" == "c-cpp" ]]; then
+          echo "Installing npm dependencies..."
+          npm install
+          echo "Ensuring CMake is installed..."
+          cmake --version || sudo apt-get install -y cmake
+          echo "Building C++ Addon..."
+          npm run build:cpp --ignore-scripts
+        else
+          echo 'If you are using a "manual" build mode for one or more of the' \
+            'languages you are analyzing, replace this with the commands to build' \
+            'your code, for example:'
+          echo '  make bootstrap'
+          echo '  make release'
+          exit 1
+        fi
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
