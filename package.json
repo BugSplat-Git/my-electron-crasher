@@ -40,7 +40,7 @@
     "node-addon-api": "^8.3.1"
   },
   "devDependencies": {
-    "@bugsplat/symbol-upload": "^10.1.8",
+    "@bugsplat/symbol-upload": "^10.1.11",
     "@eslint/js": "^9.26.0",
     "@types/node": "^22.15.12",
     "cmake-js": "^7.3.1",
