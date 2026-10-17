@@ -46,4 +46,9 @@ window.onload = function () {
     document.getElementById("renderer-error-button").onclick = function () {
         crasher.uncaughtException("uncaughtException: render process");
     }
+
+    // Trigger an unhandled JavaScript error that has a cause to test Error.cause chains in BugSplat
+    document.getElementById("cause-error-button").onclick = function () {
+        crasher.crashWithCause();
+    }
 }

@@ -22,7 +22,7 @@ The my-electron-crasher sample demonstrates how to use how to use Electron's [Cr
 1. `git clone https://github.com/BugSplat-Git/my-electron-crasher`
 2. `cd my-electron-crasher && npm i`
 3. `npm start` which will run the build and upload source maps via [@bugsplat/symbol-upload](https://www.npmjs.com/package/@bugsplat/symbol-upload)
-4. Click any of the buttons in the app to test the BugSplat integration
+4. Click any of the buttons in the app to test the BugSplat integration. The **Crash with cause** button throws an error that has a `cause` (a `SyntaxError` from `JSON.parse`); bugsplat 9.2.0 posts the whole chain and BugSplat shows each linked error as a `Caused by:` row
 5. Navigate to BugSplat's [Crashes](https://app.bugsplat.com/v2/crashes) page in your web browser
 6. When prompted to log in, use the username `fred@bugsplat.com` and password `Flintstone`
 7. Click the ID of your crash to see crash details. If everything worked, you should see something that resembles the following
