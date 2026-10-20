@@ -14,8 +14,8 @@ Integrating BugSplat into an Electron app is now a single `init()` call in the m
 ```ts
 import { init } from '@bugsplat/electron';
 
-const { database, name, version } = require('./package.json');
-init({ database, application: name, version });
+// application and version default to app.name and app.getVersion()
+init({ database: 'your-bugsplat-database' });
 ```
 
 See the [Electron integration docs](https://docs.bugsplat.com/introduction/getting-started/integrations/desktop/electron) for details.
